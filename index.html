@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>India Lockdown Indicator · File № 003</title>
+<meta name="description" content="Live dashboard tracking the probability of an India energy lockdown in the next 30 days. Re-scored every 6 hours from primary sources." />
+<meta name="dashboard-version" content="2026-04-23-v2" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F2ECDD;
+    --paper-dark:#E8E0CC;
+    --paper-line:#D6CCAD;
+    --ink:#1A1611;
+    --ink-soft:#4A3F2E;
+    --blood:#B91C1C;
+    --blood-deep:#7F1D1D;
+    --forest:#1F5F3F;
+    --forest-deep:#0F3D24;
+    --gold:#B8860B;
+    --stamp:#A62020;
+    --green:#1F5F3F;
+    --amber:#B8860B;
+    --red:#B91C1C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Instrument Serif',Georgia,serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  body{
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0px, transparent 31px, rgba(26,22,17,0.04) 31px, rgba(26,22,17,0.04) 32px),
+      radial-gradient(circle at 20% 10%, rgba(184,134,11,0.06) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(185,28,28,0.04) 0%, transparent 40%);
+    min-height:100vh;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:-0.01em}
+  .serif{font-family:'Fraunces',Georgia,serif}
+  .container{max-width:1240px;margin:0 auto;padding:0 24px}
+
+  /* Masthead */
+  .masthead{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:14px 0;margin-top:24px}
+  .masthead-inner{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.18em;color:var(--ink-soft)}
+  .masthead-edition{display:flex;gap:20px;flex-wrap:wrap}
+
+  /* Live strip */
+  .livestrip{background:var(--ink);color:var(--paper);padding:8px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase}
+  .livestrip-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blood);margin-right:8px;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+  /* Hero indicator */
+  .hero{padding:64px 0 40px}
+  .hero-kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--blood);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+  .hero-kicker::before{content:"";width:36px;height:2px;background:var(--blood);display:inline-block}
+  .hero h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(36px,6vw,72px);line-height:1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:24px}
+  .hero h1 em{font-style:italic;color:var(--blood)}
+  .hero-sub{font-family:'Instrument Serif',serif;font-size:clamp(18px,2vw,22px);line-height:1.45;max-width:780px;color:var(--ink-soft);margin-bottom:40px}
+
+  /* Big indicator gauge */
+  .indicator{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  @media(max-width:820px){.indicator{grid-template-columns:1fr}}
+  .ind-left{padding:32px 32px;border-right:1px solid var(--ink);position:relative}
+  @media(max-width:820px){.ind-left{border-right:none;border-bottom:1px solid var(--ink)}}
+  .ind-right{padding:32px 32px}
+  .ind-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:18px}
+  .ind-value{font-family:'Fraunces',serif;font-size:clamp(80px,15vw,160px);line-height:0.9;font-weight:300;letter-spacing:-0.04em}
+  .ind-value-pct{font-size:0.5em;color:var(--ink-soft)}
+  .ind-band{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.16em;padding:6px 14px;margin-top:18px;color:var(--paper)}
+  .ind-band.GREEN{background:var(--green)}
+  .ind-band.YELLOW{background:var(--amber)}
+  .ind-band.ORANGE{background:#D2691E}
+  .ind-band.RED{background:var(--blood)}
+  .ind-verdict{font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--ink-soft);margin-top:18px;line-height:1.4;max-width:520px}
+  .ind-bar{height:14px;background:var(--paper-dark);border:1px solid var(--ink);position:relative;margin-top:24px}
+  .ind-bar-fill{height:100%;transition:width 0.6s cubic-bezier(0.2,0.6,0.2,1)}
+  .ind-bar-marks{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:var(--ink-soft);margin-top:6px}
+
+  /* Outcomes */
+  .outcomes-grid{display:grid;grid-template-columns:1fr;gap:14px}
+  .outcome-row{display:grid;grid-template-columns:1fr 70px;gap:14px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--paper-line)}
+  .outcome-row:last-child{border-bottom:none}
+  .outcome-label{font-family:'Instrument Serif',serif;font-size:15px;color:var(--ink)}
+  .outcome-pct{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:600;color:var(--ink);text-align:right}
+
+  /* Sections */
+  .section{padding:60px 0;border-top:1px solid var(--ink)}
+  .section-number{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.3em;color:var(--blood);text-transform:uppercase;margin-bottom:16px}
+  .section-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(28px,4vw,46px);line-height:1.05;letter-spacing:-0.02em;margin-bottom:18px}
+  .section-title em{font-style:italic;color:var(--blood)}
+  .section-intro{font-family:'Instrument Serif',serif;font-size:18px;line-height:1.55;max-width:780px;color:var(--ink-soft);margin-bottom:36px}
+
+  /* Trigger cards */
+  .triggers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:820px){.triggers-grid{grid-template-columns:1fr}}
+  .trigger-card{
+    background:var(--paper);
+    border:1px solid var(--ink);
+    padding:20px 22px;
+    position:relative;
+  }
+  .trigger-card.active{background:rgba(185,28,28,0.06);border-width:2px}
+  .trigger-status{position:absolute;top:18px;right:22px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.16em;padding:3px 9px}
+  .trigger-status.dormant{background:var(--paper-dark);color:var(--ink-soft)}
+  .trigger-status.warming{background:var(--amber);color:var(--paper)}
+  .trigger-status.fired{background:var(--blood);color:var(--paper)}
+  .trigger-name{font-family:'Fraunces',serif;font-size:20px;font-weight:400;letter-spacing:-0.01em;line-height:1.2;margin-bottom:10px;padding-right:80px}
+  .trigger-impact{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+  .trigger-evidence{font-family:'Instrument Serif',serif;font-style:italic;font-size:14px;color:var(--ink-soft);line-height:1.4;margin-top:12px}
+
+  /* Signal cards */
+  .signals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:820px){.signals-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.signals-grid{grid-template-columns:1fr}}
+  .signal-card{background:var(--paper);border:1px solid var(--ink);padding:18px 20px;position:relative;overflow:hidden}
+  .signal-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+  .signal-value{font-family:'Fraunces',serif;font-size:24px;font-weight:400;letter-spacing:-0.01em;line-height:1.1}
+  .signal-trend{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-soft);margin-top:8px}
+  .signal-card .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .signal-card .dot.green{background:var(--green)}
+  .signal-card .dot.amber{background:var(--amber)}
+  .signal-card .dot.red{background:var(--blood)}
+
+  /* History trend */
+  .trend-wrap{background:var(--paper);border:1px solid var(--ink);padding:24px;margin-top:24px}
+  .trend-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  .trend-title{font-family:'Fraunces',serif;font-size:18px;font-weight:400}
+  .trend-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .trend-svg{width:100%;height:180px;display:block}
+
+  /* Footer */
+  .footer{padding:40px 0 80px;border-top:2px solid var(--ink);margin-top:80px}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* Methodology */
+  .method{border:1px solid var(--ink);padding:24px 28px;background:rgba(184,134,11,0.04);margin-top:24px}
+  .method h3{font-family:'Fraunces',serif;font-weight:400;font-size:20px;margin-bottom:10px}
+  .method ul{list-style:none;padding:0}
+  .method li{padding:6px 0;border-bottom:1px dashed var(--paper-line);font-size:14px;display:flex;gap:14px;align-items:flex-start}
+  .method li:last-child{border-bottom:none}
+  .method li .num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--blood);letter-spacing:0.1em;padding-top:4px;min-width:36px}
+  .method li .text{flex:1;color:var(--ink-soft)}
+  .method li .text strong{color:var(--ink);font-weight:500}
+
+  /* News feed */
+  .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:820px){.news-grid{grid-template-columns:1fr}}
+  .news-card{background:var(--paper);border:1px solid var(--ink);padding:14px 16px;position:relative;transition:background .15s}
+  .news-card:hover{background:#FBF7EC}
+  .news-meta{display:flex;gap:10px;align-items:center;margin-bottom:6px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .news-sev{display:inline-block;padding:2px 7px;font-weight:600;color:var(--paper)}
+  .news-sev.critical{background:var(--blood)}
+  .news-sev.high{background:#D2691E}
+  .news-sev.medium{background:var(--amber)}
+  .news-sev.low{background:var(--forest)}
+  .news-tag{display:inline-block;padding:2px 7px;background:var(--paper-dark);color:var(--ink);font-weight:500}
+  .news-source{color:var(--ink)}
+  .news-title{font-family:'Instrument Serif',serif;font-size:16px;line-height:1.35;color:var(--ink)}
+
+  .news-filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 20px 0}
+  .news-filter{font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 12px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--ink);background:var(--paper);cursor:pointer;color:var(--ink-soft);transition:all .15s}
+  .news-filter:hover{background:var(--paper-dark)}
+  .news-filter.active{background:var(--ink);color:var(--paper)}
+
+  /* Oil market */
+  .oil-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:820px){.oil-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.oil-grid{grid-template-columns:1fr}}
+  .oil-card{background:var(--paper);border:1px solid var(--ink);padding:20px 22px}
+  .oil-card.lead{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .oil-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px}
+  .oil-card.lead .oil-label{color:var(--paper-line)}
+  .oil-value{font-family:'Fraunces',serif;font-size:36px;font-weight:300;letter-spacing:-0.02em;line-height:1.1}
+  .oil-card.lead .oil-value{color:var(--blood)}
+  .oil-sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);margin-top:6px}
+  .oil-card.lead .oil-sub{color:var(--paper-line)}
+
+  /* Timeline */
+  .timeline{position:relative;padding-left:32px}
+  .timeline::before{content:"";position:absolute;left:6px;top:10px;bottom:10px;width:2px;background:var(--ink)}
+  .timeline-item{position:relative;padding:14px 0;border-bottom:1px dashed var(--paper-line)}
+  .timeline-item:last-child{border-bottom:none}
+  .timeline-dot{position:absolute;left:-32px;top:20px;width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);background:var(--paper)}
+  .timeline-dot.critical{background:var(--blood);border-color:var(--blood)}
+  .timeline-dot.high{background:#D2691E;border-color:#D2691E}
+  .timeline-dot.medium{background:var(--amber);border-color:var(--amber)}
+  .timeline-date{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--ink-soft);margin-bottom:4px}
+  .timeline-event{font-family:'Instrument Serif',serif;font-size:17px;line-height:1.35;color:var(--ink)}
+  .timeline-source{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-soft);margin-top:4px;letter-spacing:0.1em;text-transform:uppercase}
+
+  /* Regional monitor */
+  .region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:820px){.region-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.region-grid{grid-template-columns:1fr}}
+  .region-card{background:var(--paper);border:1px solid var(--ink);padding:18px 20px;position:relative}
+  .region-card.red{border-left:4px solid var(--blood)}
+  .region-card.amber{border-left:4px solid var(--amber)}
+  .region-card.green{border-left:4px solid var(--forest)}
+  .region-country{font-family:'Fraunces',serif;font-size:22px;font-weight:500;margin-bottom:4px}
+  .region-status{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:10px}
+  .region-status.red{color:var(--blood)}
+  .region-status.amber{color:var(--amber)}
+  .region-status.green{color:var(--forest)}
+  .region-measures{font-family:'Instrument Serif',serif;font-size:14px;line-height:1.4;color:var(--ink-soft)}
+  .region-dep{font-family:'JetBrains Mono',monospace;font-size:10px;margin-top:10px;color:var(--ink-soft);letter-spacing:0.1em;text-transform:uppercase}
+
+  /* India energy position */
+  .ie-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:820px){.ie-grid{grid-template-columns:1fr}}
+  .ie-card{background:var(--paper);border:1px solid var(--ink);padding:24px 26px}
+  .ie-card h4{font-family:'Fraunces',serif;font-size:20px;font-weight:500;margin-bottom:14px}
+  .ie-stat{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--paper-line);font-family:'Instrument Serif',serif;font-size:15px}
+  .ie-stat:last-child{border-bottom:none}
+  .ie-stat-key{color:var(--ink-soft)}
+  .ie-stat-val{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--ink)}
+  .ie-mix-bar{display:flex;height:30px;border:1px solid var(--ink);margin-bottom:10px;overflow:hidden}
+  .ie-mix-seg{display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--paper);font-weight:600;letter-spacing:0.1em}
+  .ie-mix-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .ie-mix-legend .dot{display:inline-block;width:8px;height:8px;margin-right:6px}
+</style>
+</head>
+<body>
+
+<div class="livestrip">
+  <div class="container livestrip-inner">
+    <span><span class="live-dot"></span>LIVE INDICATOR · FILE № 003 · v2026-04-23</span>
+    <span id="liveTs">Last update: —</span>
+    <span id="liveNext">Next refresh: —</span>
+    <span id="liveCount">— headlines</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-edition">
+        <span>File № 003</span>
+        <span>DOSSIER / INDIA ENERGY LOCKDOWN INDICATOR</span>
+      </div>
+      <div>RE-SCORED EVERY 6 HOURS</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <section class="hero">
+    <div class="hero-kicker">Real-time · Front-running media · Every number sourced</div>
+    <h1>The probability India locks down in the <em>next 30 days.</em></h1>
+    <p class="hero-sub">A composite indicator of six escalation triggers, three structural defenses, and the secondary signals everybody else is ignoring. Re-scored every six hours from primary news, market data and government statements. Not a prediction — an instrument.</p>
+
+    <div class="indicator">
+      <div class="ind-left">
+        <div class="ind-label">Lockdown Probability · Next 30 Days</div>
+        <div>
+          <span class="ind-value" id="probValue">—</span><span class="ind-value-pct">%</span>
+        </div>
+        <div class="ind-band" id="probBand">—</div>
+        <div class="ind-verdict" id="probVerdict">Loading current state…</div>
+        <div class="ind-bar"><div class="ind-bar-fill" id="probBarFill" style="width:0%;background:var(--green)"></div></div>
+        <div class="ind-bar-marks">
+          <span>0 GREEN</span><span>15 YELLOW</span><span>35 ORANGE</span><span>60 RED</span><span>100</span>
+        </div>
+      </div>
+      <div class="ind-right">
+        <div class="ind-label">30-Day Outcomes Distribution</div>
+        <div class="outcomes-grid" id="outcomesGrid">
+          <div class="outcome-row"><div class="outcome-label">Loading…</div><div class="outcome-pct">—</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- NEW: Live News Feed -->
+<div class="container">
+  <section class="section">
+    <div class="section-number">01 · Live News Feed</div>
+    <h1 class="section-title">Every headline the indicator is reading. <em>Front-run the story.</em></h1>
+    <p class="section-intro">Top headlines from 17 live RSS searches covering war, oil market, India energy, regional precedent and regulatory signals. Each card shows severity, the trigger it maps to, and the source. Pulled and re-tagged every 6 hours.</p>
+    <div class="news-filter-bar">
+      <button class="news-filter active" data-filter="all">All</button>
+      <button class="news-filter" data-filter="war">War</button>
+      <button class="news-filter" data-filter="india">India</button>
+      <button class="news-filter" data-filter="market">Market</button>
+      <button class="news-filter" data-filter="regional">Regional</button>
+    </div>
+    <div class="news-grid" id="newsGrid"></div>
+  </section>
+</div>
+
+<!-- NEW: Oil Market -->
+<div class="container">
+  <section class="section">
+    <div class="section-number">02 · Oil Market Snapshot</div>
+    <h1 class="section-title">Where the price is. <em>Where the curve thinks it's going.</em></h1>
+    <p class="section-intro">Live Brent and WTI spot, Brent-WTI spread, EIA Q2 forecast, and the global supply disruption scale. Prices pulled from Yahoo / Investing / MarketWatch / TradingEconomics — first successful source wins.</p>
+    <div class="oil-grid">
+      <div class="oil-card lead">
+        <div class="oil-label">Brent Spot</div>
+        <div class="oil-value" id="oilBrent">—</div>
+        <div class="oil-sub" id="oilBrentSub">USD per barrel</div>
+      </div>
+      <div class="oil-card">
+        <div class="oil-label">WTI Spot</div>
+        <div class="oil-value" id="oilWti">—</div>
+        <div class="oil-sub">USD per barrel</div>
+      </div>
+      <div class="oil-card">
+        <div class="oil-label">Brent-WTI Spread</div>
+        <div class="oil-value" id="oilSpread">—</div>
+        <div class="oil-sub">USD · &gt;$10 signals Hormuz dislocation</div>
+      </div>
+      <div class="oil-card">
+        <div class="oil-label">EIA Q2 Forecast</div>
+        <div class="oil-value" id="oilForecast">$115</div>
+        <div class="oil-sub">Peak · then eases per STEO</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;font-family:'Instrument Serif',serif;font-style:italic;color:var(--ink-soft);font-size:15px">
+      Global oil supply plunged <strong style="color:var(--blood);font-style:normal">10.1 mb/d</strong> to 97 mb/d in March — the largest disruption in history per IEA OMR April 2026. ~20% of global supply normally transits Hormuz.
+    </div>
+  </section>
+</div>
+
+<!-- NEW: War Timeline -->
+<div class="container">
+  <section class="section">
+    <div class="section-number">03 · War Timeline</div>
+    <h1 class="section-title">From the first strike to tonight. <em>Dated, sourced, cumulative.</em></h1>
+    <p class="section-intro">The chronology that got us here. Critical severity events in blood red; high in orange; medium in gold. New entries auto-append when the worker detects dated breaking news; the seed list is sourced from CNN, NPR, Al Jazeera, IEA and named-minister quotes.</p>
+    <div class="timeline" id="timelineList"></div>
+  </section>
+</div>
+
+<!-- NEW: India Energy Position -->
+<div class="container">
+  <section class="section">
+    <div class="section-number">04 · India Energy Position</div>
+    <h1 class="section-title">The structural defenses. <em>Why Delhi isn't Dhaka.</em></h1>
+    <p class="section-intro">India's import mix, strategic reserves, fiscal policy, and consumer-side signals — the four load-bearing walls of the "no-lockdown" thesis. Each stat traces to a named official source or audited data.</p>
+    <div class="ie-grid">
+      <div class="ie-card">
+        <h4>Crude import mix (current)</h4>
+        <div class="ie-mix-bar" id="ieMixBar"></div>
+        <div class="ie-mix-legend" id="ieMixLegend"></div>
+        <div class="ie-stat" style="margin-top:14px"><span class="ie-stat-key">Total imports</span><span class="ie-stat-val" id="ieTotal">—</span></div>
+        <div class="ie-stat"><span class="ie-stat-key">Off-Hormuz share</span><span class="ie-stat-val" id="ieOffHormuz">—</span></div>
+      </div>
+      <div class="ie-card">
+        <h4>Strategic reserves & fiscal tools</h4>
+        <div class="ie-stat"><span class="ie-stat-key">Days of cover</span><span class="ie-stat-val" id="ieDays">—</span></div>
+        <div class="ie-stat"><span class="ie-stat-key">Strategic crude reserve</span><span class="ie-stat-val" id="ieCrudeDays">—</span></div>
+        <div class="ie-stat"><span class="ie-stat-key">LPG strategic storage</span><span class="ie-stat-val" id="ieLpgDays">—</span></div>
+        <div class="ie-stat"><span class="ie-stat-key">Petrol excise (was ₹13)</span><span class="ie-stat-val" id="iePetrol">—</span></div>
+        <div class="ie-stat"><span class="ie-stat-key">Diesel excise (was ₹10)</span><span class="ie-stat-val" id="ieDiesel">—</span></div>
+      </div>
+    </div>
+    <div style="margin-top:16px;font-family:'Instrument Serif',serif;font-style:italic;color:var(--ink-soft);font-size:15px;max-width:800px" id="ieStance"></div>
+  </section>
+</div>
+
+<!-- NEW: Regional Monitor -->
+<div class="container">
+  <section class="section">
+    <div class="section-number">05 · Regional Monitor</div>
+    <h1 class="section-title">Who has locked down. <em>Who hasn't. Why India is in column B.</em></h1>
+    <p class="section-intro">Countries that imposed formal energy restrictions vs. those holding the line. Each card shows the specific measure taken and the country's import dependence — the single strongest predictor of whether a government breaks.</p>
+    <div class="region-grid" id="regionGrid"></div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="section">
+    <div class="section-number">06 · Trigger Watchlist</div>
+    <h1 class="section-title">Six conditions that move the dial. <em>None should fire quietly.</em></h1>
+    <p class="section-intro">Each trigger has a weight and a state. The script reads news headlines and price data every six hours, advances trigger states when keywords match, and writes the new probability to <code>state.json</code>. Currently FIRED triggers are highlighted in blood.</p>
+    <div class="triggers-grid" id="triggersGrid"></div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="section">
+    <div class="section-number">07 · Headline Signals</div>
+    <h1 class="section-title">The instruments behind the dial.</h1>
+    <p class="section-intro">Live values for the six headline signals the indicator is watching. Green means the signal is reducing lockdown probability; amber means watch; red means escalating.</p>
+    <div class="signals-grid" id="signalsGrid"></div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="section">
+    <div class="section-number">08 · Indicator Trend</div>
+    <h1 class="section-title">Where the dial has been.</h1>
+    <p class="section-intro">Every update writes to <code>history.jsonl</code>. The chart below shows the probability over the last fortnight of updates. A rising curve means the structural defenses are wearing thin.</p>
+    <div class="trend-wrap">
+      <div class="trend-head">
+        <div class="trend-title">Lockdown Probability · Last 14 days</div>
+        <div class="trend-meta" id="trendMeta">— readings</div>
+      </div>
+      <svg class="trend-svg" id="trendSvg" viewBox="0 0 1000 180" preserveAspectRatio="none"></svg>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="section">
+    <div class="section-number">09 · Methodology</div>
+    <h1 class="section-title">How the dial works.</h1>
+    <p class="section-intro">Same discipline as the bryanjohnson v3 dossier. Every input is sourced. The scoring function is auditable. Manual overrides are visible in <code>state.json</code>.</p>
+
+    <div class="method">
+      <h3>Scoring weights (max 125, normalized to 100)</h3>
+      <ul>
+        <li><span class="num">T1</span><span class="text"><strong>Strait of Hormuz status</strong> — open / restricted / closed days. Max 20 points.</span></li>
+        <li><span class="num">T2</span><span class="text"><strong>Iran strikes on Saudi/UAE oil infra</strong> — none / threats / confirmed / sustained. Max 20 points.</span></li>
+        <li><span class="num">T3</span><span class="text"><strong>Brent crude price</strong> — &lt;$90 / $90-110 / $110-130 / $130-150 sustained / &gt;$150. Max 15 points.</span></li>
+        <li><span class="num">T4</span><span class="text"><strong>US ground escalation</strong> — none / buildup / kinetic land / open ground war. Max 15 points.</span></li>
+        <li><span class="num">T5</span><span class="text"><strong>India SPR days remaining</strong> — &gt;60 / 45-60 / 30-45 / &lt;30. Max 15 points.</span></li>
+        <li><span class="num">T6</span><span class="text"><strong>Indian refinery attack</strong> — none / threats / attempted / successful. Max 30 points (heaviest single weight).</span></li>
+        <li><span class="num">+S</span><span class="text"><strong>Secondary signals</strong> — government denial language, LPG cylinder delays, INR-USD stress, regional escalation. Net ±10 points.</span></li>
+      </ul>
+    </div>
+
+    <div class="method" style="margin-top:20px">
+      <h3>Verdict bands</h3>
+      <ul>
+        <li><span class="num">0–15</span><span class="text"><strong>GREEN</strong> · Status quo, no formal restrictions.</span></li>
+        <li><span class="num">15–35</span><span class="text"><strong>YELLOW</strong> · Targeted measures probable (LPG quotas, WFH advisories, weekend movement curbs).</span></li>
+        <li><span class="num">35–60</span><span class="text"><strong>ORANGE</strong> · State-level energy emergencies likely; aviation fuel curbs.</span></li>
+        <li><span class="num">60–100</span><span class="text"><strong>RED</strong> · Full nationwide lockdown probable within 30 days.</span></li>
+      </ul>
+    </div>
+
+    <div class="method" style="margin-top:20px">
+      <h3>Update cadence</h3>
+      <ul>
+        <li><span class="num">⏱</span><span class="text"><strong>Every 6 hours</strong> · launchd job runs <code>scripts/update-indicator.sh</code> · fetches RSS feeds, parses keywords, recalculates score, appends to <code>history.jsonl</code>.</span></li>
+        <li><span class="num">📡</span><span class="text"><strong>Auto-refresh</strong> · this page polls <code>state.json</code> every 60 seconds and re-renders if the indicator has changed.</span></li>
+        <li><span class="num">⚠</span><span class="text"><strong>Manual override</strong> · edit <code>state.json</code> directly when human judgment must override the script (e.g. breaking news the keyword scanner missed).</span></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <div class="footer">
+    <div class="footer-inner">
+      <div>FILE № 003 · INDIA ENERGY LOCKDOWN INDICATOR · 2026</div>
+      <div>EDUCATIONAL · NOT INVESTMENT ADVICE · NO POSITION RECOMMENDATION</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // file:// safe loader — reloads state.js / history.js via <script> tag instead of fetch().
+  // The worker writes state.js (window.STATE = {...}) and history.js (window.HISTORY = [...])
+  // alongside state.json / history.jsonl. The .json files are still useful for external consumers.
+  function reloadScript(src){
+    return new Promise((resolve, reject) => {
+      const old = document.querySelector('script[data-livedata="'+src+'"]');
+      if (old) old.remove();
+      const s = document.createElement('script');
+      s.src = src + '?cb=' + Date.now();
+      s.dataset.livedata = src;
+      s.onload = resolve;
+      s.onerror = () => reject(new Error('Could not load ' + src + ' — has the worker run yet? Try: ./scripts/update-indicator.sh --force'));
+      document.head.appendChild(s);
+    });
+  }
+
+  const TRIGGER_DEFS = [
+    {key:'hormuz_closed_30plus_continuous_days', name:'Strait of Hormuz closed 30+ continuous days', impact:'Probability + 15-25 pts'},
+    {key:'iran_strikes_saudi_or_uae_oil_infra', name:'Iran strikes Saudi or UAE oil infrastructure', impact:'Probability + 20-30 pts'},
+    {key:'brent_above_130_sustained_2_weeks', name:'Brent crude above $130 sustained 2+ weeks', impact:'Probability + 15-20 pts'},
+    {key:'us_ground_war_escalation', name:'US ground war escalation', impact:'Probability + 25-35 pts'},
+    {key:'india_spr_below_30_days', name:'India strategic petroleum reserve below 30 days', impact:'Probability + 30-40 pts'},
+    {key:'attack_on_indian_refinery', name:'Attack on Indian refinery (Reliance Jamnagar etc.)', impact:'Probability → 60%+ within 72 hours'},
+  ];
+
+  function fmtTs(iso){
+    if(!iso) return '—';
+    const d = new Date(iso);
+    return d.toLocaleString('en-IN', {timeZone:'Asia/Kolkata', dateStyle:'short', timeStyle:'short'}) + ' IST';
+  }
+
+  function bandColor(band){
+    return ({GREEN:'var(--green)',YELLOW:'var(--amber)',ORANGE:'#D2691E',RED:'var(--blood)'})[band] || 'var(--ink-soft)';
+  }
+
+  async function loadState(){
+    try {
+      await reloadScript('state.js');
+      if (!window.STATE) throw new Error('state.js loaded but window.STATE is empty');
+      render(window.STATE);
+      hideLoadError();
+    } catch(e){
+      console.error('Failed to load state:', e);
+      showLoadError(e.message);
+    }
+  }
+
+  function showLoadError(msg){
+    let bar = document.getElementById('loadErrorBar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'loadErrorBar';
+      bar.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#B91C1C;color:#F2ECDD;padding:14px 24px;font-family:JetBrains Mono,monospace;font-size:12px;z-index:9999;letter-spacing:0.1em';
+      document.body.prepend(bar);
+    }
+    bar.innerHTML = `⚠ Dashboard data not loading. ${msg}<br/>` +
+                    `Run: <code style="background:rgba(0,0,0,0.3);padding:2px 6px">cd ${''}~/Downloads/india-energy-thesis &amp;&amp; ./scripts/update-indicator.sh --force</code> ` +
+                    `then hard-refresh this page (⌘⇧R).`;
+  }
+  function hideLoadError(){
+    const bar = document.getElementById('loadErrorBar');
+    if (bar) bar.remove();
+  }
+
+  async function loadHistory(){
+    try {
+      await reloadScript('history.js');
+      if (!Array.isArray(window.HISTORY)) throw new Error('history.js loaded but window.HISTORY is not an array');
+      renderTrend(window.HISTORY);
+    } catch(e){
+      console.error('Failed to load history:', e);
+    }
+  }
+
+  function render(s){
+    document.getElementById('probValue').textContent = s.lockdown_probability_pct;
+    const band = document.getElementById('probBand');
+    band.textContent = s.verdict_band;
+    band.className = 'ind-band ' + s.verdict_band;
+    document.getElementById('probVerdict').textContent = s.verdict_label;
+    document.getElementById('liveTs').textContent = 'Last update: ' + fmtTs(s.captured_at);
+    document.getElementById('liveNext').textContent = 'Next refresh: ' + fmtTs(s.next_update_at);
+
+    const fill = document.getElementById('probBarFill');
+    fill.style.width = Math.min(100, s.lockdown_probability_pct) + '%';
+    fill.style.background = bandColor(s.verdict_band);
+
+    // Outcomes
+    const outcomes = s.thesis?.outcomes_30d || {};
+    const labels = {
+      status_quo: 'Status quo · high prices, no restrictions',
+      targeted_measures: 'Targeted measures · LPG quotas, WFH, weekend curbs',
+      state_emergencies: 'State-level energy emergencies (1-2 states)',
+      full_lockdown: 'Full nationwide lockdown'
+    };
+    const grid = document.getElementById('outcomesGrid');
+    grid.innerHTML = '';
+    Object.entries(outcomes).forEach(([k,v]) => {
+      const row = document.createElement('div');
+      row.className = 'outcome-row';
+      row.innerHTML = `<div class="outcome-label">${labels[k]||k}</div><div class="outcome-pct">${v}%</div>`;
+      grid.appendChild(row);
+    });
+
+    // Triggers
+    const tgrid = document.getElementById('triggersGrid');
+    tgrid.innerHTML = '';
+    TRIGGER_DEFS.forEach(def => {
+      const fired = s.trigger_watchlist_status?.[def.key] === true;
+      const card = document.createElement('div');
+      card.className = 'trigger-card' + (fired ? ' active' : '');
+      const status = fired ? 'fired' : 'dormant';
+      const statusLabel = fired ? 'FIRED' : 'DORMANT';
+      card.innerHTML = `
+        <span class="trigger-status ${status}">${statusLabel}</span>
+        <div class="trigger-name">${def.name}</div>
+        <div class="trigger-impact">${def.impact}</div>
+      `;
+      tgrid.appendChild(card);
+    });
+
+    // Signals
+    const sgrid = document.getElementById('signalsGrid');
+    sgrid.innerHTML = '';
+    (s.headline_signals || []).forEach(sig => {
+      const card = document.createElement('div');
+      card.className = 'signal-card';
+      card.innerHTML = `
+        <div class="signal-label">${sig.label}</div>
+        <div class="signal-value"><span class="dot ${sig.color}"></span>${sig.value}</div>
+        <div class="signal-trend">trend: ${sig.trend.replace(/_/g,' ')}</div>
+      `;
+      sgrid.appendChild(card);
+    });
+
+    renderNews(s.news_feed || []);
+    renderOilMarket(s.oil_market || {});
+    renderTimeline(s.war_timeline || []);
+    renderIndiaEnergy(s.india_energy || {});
+    renderRegional(s.regional_monitor || []);
+
+    const countEl = document.getElementById('liveCount');
+    if (countEl) countEl.textContent = (s.news_feed || []).length + ' headlines';
+  }
+
+  // ----- New section renderers -----
+
+  let CURRENT_NEWS = [];
+  let CURRENT_FILTER = 'all';
+
+  function renderNews(items){
+    CURRENT_NEWS = items;
+    const grid = document.getElementById('newsGrid');
+    if (!grid) return;
+    const filtered = CURRENT_FILTER === 'all'
+      ? items
+      : items.filter(n => n.category === CURRENT_FILTER);
+    grid.innerHTML = '';
+    if (!filtered.length) {
+      grid.innerHTML = '<div style="grid-column:1/-1;font-style:italic;color:var(--ink-soft);padding:20px">No headlines in this category yet — wait for next worker run.</div>';
+      return;
+    }
+    filtered.forEach(n => {
+      const card = document.createElement('div');
+      card.className = 'news-card';
+      card.innerHTML = `
+        <div class="news-meta">
+          <span class="news-sev ${n.severity || 'medium'}">${(n.severity || 'medium').toUpperCase()}</span>
+          <span class="news-tag">${(n.trigger || '').replace(/_/g,' ')}</span>
+          <span class="news-source">${n.source || 'unknown'}</span>
+        </div>
+        <div class="news-title">${n.title || ''}</div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // News filter buttons
+  document.addEventListener('click', e => {
+    if (!e.target.classList.contains('news-filter')) return;
+    document.querySelectorAll('.news-filter').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    CURRENT_FILTER = e.target.dataset.filter;
+    renderNews(CURRENT_NEWS);
+  });
+
+  function renderOilMarket(o){
+    const fmt = v => (v == null ? '—' : '$' + (typeof v === 'number' ? v.toFixed(2) : v));
+    const elBrent = document.getElementById('oilBrent'); if (elBrent) elBrent.textContent = fmt(o.brent_spot_usd);
+    const elWti = document.getElementById('oilWti'); if (elWti) elWti.textContent = fmt(o.wti_spot_usd);
+    const elSpread = document.getElementById('oilSpread'); if (elSpread) elSpread.textContent = fmt(o.brent_wti_spread_usd);
+    const elBrentSub = document.getElementById('oilBrentSub');
+    if (elBrentSub) {
+      if (o.brent_spot_usd == null) {
+        elBrentSub.textContent = 'fetch failed — check scripts/update.log';
+      } else if (o.brent_delta_pct_since_last != null) {
+        const delta = parseFloat(o.brent_delta_pct_since_last);
+        const arrow = delta > 0 ? '▲' : (delta < 0 ? '▼' : '·');
+        elBrentSub.textContent = `USD per barrel · ${arrow} ${o.brent_delta_pct_since_last}% vs last reading`;
+      } else {
+        elBrentSub.textContent = 'USD per barrel · spot';
+      }
+    }
+  }
+
+  function renderTimeline(items){
+    const list = document.getElementById('timelineList');
+    if (!list) return;
+    list.innerHTML = '';
+    items.slice().reverse().forEach(it => {
+      const item = document.createElement('div');
+      item.className = 'timeline-item';
+      item.innerHTML = `
+        <div class="timeline-dot ${it.severity || 'medium'}"></div>
+        <div class="timeline-date">${it.date}</div>
+        <div class="timeline-event">${it.event}</div>
+        <div class="timeline-source">${it.source || ''}</div>
+      `;
+      list.appendChild(item);
+    });
+  }
+
+  function renderIndiaEnergy(ie){
+    if (!ie || !ie.imports_mix_pct) return;
+    const mix = ie.imports_mix_pct;
+    const colors = {russia:'#1F5F3F', iraq:'#B91C1C', saudi:'#B8860B', uae:'#7F1D1D', us:'#4A3F2E', other:'#D6CCAD'};
+    const bar = document.getElementById('ieMixBar');
+    const legend = document.getElementById('ieMixLegend');
+    if (bar) {
+      bar.innerHTML = '';
+      Object.entries(mix).forEach(([k,v]) => {
+        const seg = document.createElement('div');
+        seg.className = 'ie-mix-seg';
+        seg.style.width = v + '%';
+        seg.style.background = colors[k] || '#888';
+        seg.textContent = v + '%';
+        seg.title = k + ' ' + v + '%';
+        bar.appendChild(seg);
+      });
+    }
+    if (legend) {
+      legend.innerHTML = '';
+      Object.entries(mix).forEach(([k,v]) => {
+        const item = document.createElement('div');
+        item.innerHTML = `<span class="dot" style="background:${colors[k]||'#888'}"></span>${k.toUpperCase()} ${v}%`;
+        legend.appendChild(item);
+      });
+    }
+    const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    setText('ieTotal', (ie.imports_total_mbd || '—') + ' mb/d');
+    setText('ieOffHormuz', (ie.imports_off_hormuz_pct || '—') + '%');
+    if (ie.strategic_reserves) {
+      setText('ieDays', ie.strategic_reserves.days_cover + ' days total');
+      setText('ieCrudeDays', ie.strategic_reserves.crude_days + ' days');
+      setText('ieLpgDays', ie.strategic_reserves.lpg_days + ' days · soft spot');
+    }
+    if (ie.fuel_excise) {
+      setText('iePetrol', '₹' + ie.fuel_excise.petrol_inr_per_l + '/L');
+      setText('ieDiesel', '₹' + ie.fuel_excise.diesel_inr_per_l + '/L');
+    }
+    const stance = document.getElementById('ieStance');
+    if (stance) stance.textContent = (ie.govt_stance || '') + ' · Consumer impact: ' + (ie.consumer_impact || '');
+  }
+
+  function renderRegional(items){
+    const grid = document.getElementById('regionGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    items.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'region-card ' + (r.severity || 'amber');
+      card.innerHTML = `
+        <div class="region-country">${r.country}</div>
+        <div class="region-status ${r.severity || 'amber'}">${r.status}</div>
+        <div class="region-measures">${r.measures}</div>
+        <div class="region-dep">Import dependence: ${r.import_dep_pct}%</div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function renderTrend(history){
+    const svg = document.getElementById('trendSvg');
+    document.getElementById('trendMeta').textContent = `${history.length} reading${history.length===1?'':'s'}`;
+    if(!history.length) return;
+
+    const W = 1000, H = 180, P = 24;
+    const xs = history.map((_,i) => P + (i/(Math.max(1,history.length-1))) * (W - 2*P));
+    const ys = history.map(h => H - P - (Math.min(100, h.prob)/100) * (H - 2*P));
+
+    let path = '';
+    xs.forEach((x,i) => {
+      path += (i===0 ? 'M' : 'L') + x.toFixed(1) + ',' + ys[i].toFixed(1) + ' ';
+    });
+
+    // Bands shading
+    const bandY = (pct) => H - P - (pct/100) * (H - 2*P);
+    const grid = `
+      <line x1="${P}" y1="${bandY(15)}" x2="${W-P}" y2="${bandY(15)}" stroke="#D6CCAD" stroke-dasharray="2,2"/>
+      <line x1="${P}" y1="${bandY(35)}" x2="${W-P}" y2="${bandY(35)}" stroke="#D6CCAD" stroke-dasharray="2,2"/>
+      <line x1="${P}" y1="${bandY(60)}" x2="${W-P}" y2="${bandY(60)}" stroke="#D6CCAD" stroke-dasharray="2,2"/>
+      <text x="${W-P-2}" y="${bandY(15)-3}" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#4A3F2E">15 · YELLOW</text>
+      <text x="${W-P-2}" y="${bandY(35)-3}" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#4A3F2E">35 · ORANGE</text>
+      <text x="${W-P-2}" y="${bandY(60)-3}" text-anchor="end" font-family="JetBrains Mono" font-size="9" fill="#4A3F2E">60 · RED</text>
+    `;
+
+    const dots = xs.map((x,i) => `<circle cx="${x}" cy="${ys[i]}" r="3" fill="#1A1611"/>`).join('');
+
+    svg.innerHTML = `
+      <rect x="${P}" y="${P}" width="${W-2*P}" height="${H-2*P}" fill="#FBF7EC" stroke="#1A1611"/>
+      ${grid}
+      <path d="${path}" fill="none" stroke="#B91C1C" stroke-width="2"/>
+      ${dots}
+    `;
+  }
+
+  loadState();
+  loadHistory();
+  setInterval(loadState, 60_000);
+  setInterval(loadHistory, 60_000);
+</script>
+
+</body>
+</html>

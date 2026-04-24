@@ -8,4 +8,10 @@ window.HISTORY = [
 {"ts":"2026-04-24T01:13:12Z","prob":40,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 51/125; brent=106.44; refinery_attack=false"}
 ,
 {"ts":"2026-04-24T06:59:21Z","prob":16,"band":"YELLOW","method":"automated_rss_market_scrape","note":"raw 20/125; brent=na; refinery_attack=false"}
+,
+{"ts":"2026-04-24T12:19:12Z","prob":40,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 51/125; brent=106.30; refinery_attack=false"}
+,
+{"ts":"2026-04-24T12:44:08Z","prob":40,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 51/125; brent=106.30; refinery_attack=false"}
+,
+{"ts":"2026-04-24T12:45:34Z","prob":40,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 51/125; brent=106.30; refinery_attack=false"}
 ];

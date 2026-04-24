@@ -98,6 +98,10 @@ fetch_html "https://finance.yahoo.com/quote/CL=F/"                        "$TMP/
 fetch_html "https://www.marketwatch.com/investing/future/crude%20oil%20-%20electronic" "$TMP/wti_mw.html"
 fetch_html "https://www.investing.com/commodities/crude-oil"              "$TMP/wti_invest.html"
 fetch_html "https://tradingeconomics.com/commodity/crude-oil"             "$TMP/wti_te.html"
+# Prediction markets — Polymarket is regulatory-blocked from India; using Manifold (accessible) as proxy.
+fetch_html "https://api.manifold.markets/v0/search-markets?term=iran&limit=15"            "$TMP/manifold_iran.json"
+fetch_html "https://api.manifold.markets/v0/search-markets?term=oil%20price&limit=12"     "$TMP/manifold_oil.json"
+fetch_html "https://api.manifold.markets/v0/search-markets?term=india%20politics&limit=15" "$TMP/manifold_india.json"
 
 # ----- Helpers -----
 
@@ -528,6 +532,34 @@ fi
 # News feed (live headlines with trigger tags)
 NEWS_FEED=$(build_news_feed)
 
+# Prediction markets (Manifold; Polymarket itself is regulatory-blocked from India)
+manifold_or_empty() {
+  local file="$1"
+  if [ -f "$file" ] && head -c 1 "$file" 2>/dev/null | grep -q '\['; then
+    cat "$file"
+  else
+    printf '[]'
+  fi
+}
+build_prediction_markets() {
+  printf '{\n'
+  printf '    "primary_source_blocked": true,\n'
+  printf '    "primary_source_name": "Polymarket",\n'
+  printf '    "primary_source_block_reason": "Polymarket and Kalshi are regulatory-blocked from Indian ISPs (RBI / MeitY restrictions on real-money prediction markets). We surface equivalent prediction-market data from Manifold Markets, which is accessible and tracks the same underlying questions.",\n'
+  printf '    "displayed_source_name": "Manifold Markets",\n'
+  printf '    "displayed_source_url": "https://manifold.markets",\n'
+  printf '    "iran_war": '
+  manifold_or_empty "$TMP/manifold_iran.json"
+  printf ',\n'
+  printf '    "oil": '
+  manifold_or_empty "$TMP/manifold_oil.json"
+  printf ',\n'
+  printf '    "india": '
+  manifold_or_empty "$TMP/manifold_india.json"
+  printf '\n  }'
+}
+PREDICTION_MARKETS=$(build_prediction_markets)
+
 # ----- Static structured data (manually curated v1; auto-update later) -----
 
 WAR_TIMELINE='[
@@ -653,6 +685,7 @@ build_state() {
   printf '  "regional_monitor": %s,\n' "$REGIONAL_MONITOR"
   printf '  "india_energy": %s,\n' "$INDIA_ENERGY"
   printf '  "news_feed": [%s\n  ],\n' "$NEWS_FEED"
+  printf '  "prediction_markets": %s,\n' "$PREDICTION_MARKETS"
   printf '  "history_pointer": "history.jsonl"\n'
   printf '}\n'
 }

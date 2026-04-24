@@ -122,3 +122,5 @@
 [2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://tradingeconomics.com/commodity/crude-oil
 [2026-04-24T06:59:22Z] wrote state.json + state.js (prob=16% band=YELLOW raw=20/125) and appended history.jsonl + history.js
 [2026-04-24T06:59:22Z] === update-indicator END ===
+[2026-04-24T12:45:04Z] === update-indicator START (dry_run=0 force=0) ===
+[2026-04-24T12:45:04Z] Last update was 0h ago; skipping (use --force to override).

@@ -1,0 +1,330 @@
+[2026-04-23T08:22:00Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T08:22:00Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T08:22:01Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T08:22:02Z] fetch RSS: Brent+crude+oil+price+%24130
+[2026-04-23T08:22:03Z] fetch RSS: US+ground+troops+Iran+war
+[2026-04-23T08:22:04Z] fetch RSS: India+strategic+petroleum+reserve+days
+[2026-04-23T08:22:05Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T08:22:06Z] fetch RSS: India+lockdown+LPG+rationing+petroleum+ministry
+[2026-04-23T08:22:07Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T08:22:09Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T08:26:31Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T08:26:31Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T08:26:32Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T08:26:34Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T08:26:35Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T08:26:37Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T08:26:38Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T08:26:39Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T08:26:40Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T08:26:41Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T09:13:42Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T09:13:42Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T09:13:44Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T09:13:45Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T09:13:46Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T09:13:48Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T09:13:49Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T09:13:50Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T09:13:51Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T09:13:53Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T09:13:55Z] wrote state.json prob=79% band=RED raw=99/125 and appended history.jsonl
+[2026-04-23T09:13:55Z] === update-indicator END ===
+[2026-04-23T09:15:06Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T09:15:06Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T09:15:07Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T09:15:07Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T09:15:08Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T09:15:09Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T09:15:09Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T09:15:10Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T09:15:11Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T09:15:12Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T09:15:14Z] wrote state.json prob=67% band=RED raw=84/125 and appended history.jsonl
+[2026-04-23T09:15:14Z] === update-indicator END ===
+[2026-04-23T09:16:37Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T09:16:37Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T09:16:38Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T09:16:40Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T09:16:41Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T09:16:43Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T09:16:44Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T09:16:45Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T09:16:46Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T09:16:47Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T09:16:50Z] wrote state.json prob=40% band=ORANGE raw=51/125 and appended history.jsonl
+[2026-04-23T09:16:50Z] === update-indicator END ===
+[2026-04-23T09:22:41Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T09:22:41Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T09:22:42Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T09:22:43Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T09:22:44Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T09:22:45Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T09:22:46Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T09:22:47Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T09:22:48Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T09:22:49Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T09:22:51Z] wrote state.json + state.js (prob=40% band=ORANGE raw=51/125) and appended history.jsonl + history.js
+[2026-04-23T09:22:51Z] === update-indicator END ===
+[2026-04-23T09:31:30Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T09:31:30Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T09:31:31Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T09:31:33Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T09:31:34Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T09:31:35Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T09:31:36Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T09:31:37Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T09:31:38Z] fetch RSS: India+petrol+diesel+price+April+2026
+[2026-04-23T09:31:38Z] fetch RSS: India+LPG+cylinder+price+shortage
+[2026-04-23T09:31:39Z] fetch RSS: Russia+India+oil+imports+2026
+[2026-04-23T09:31:41Z] fetch RSS: OPEC+production+cut+April+2026
+[2026-04-23T09:31:42Z] fetch RSS: Bangladesh+energy+crisis+fuel+rationing
+[2026-04-23T09:31:42Z] fetch RSS: Pakistan+four+day+workweek+energy+crisis
+[2026-04-23T09:31:43Z] fetch RSS: Iran+ceasefire+April+2026+ships+seized
+[2026-04-23T09:31:44Z] fetch RSS: EIA+STEO+Brent+forecast+2026
+[2026-04-23T09:31:45Z] fetch RSS: INR+rupee+dollar+exchange+rate+April+2026
+[2026-04-23T09:31:46Z] fetch RSS: Reliance+Jamnagar+BPCL+IOC+HPCL+stock+2026
+[2026-04-23T09:31:47Z] fetch RSS: aviation+fuel+ATF+jet+kerosene+India
+[2026-04-23T09:31:48Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T09:31:48Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T09:31:51Z] fetch HTML: https://www.marketwatch.com/investing/future/brent%20crude
+[2026-04-23T09:31:51Z] fetch HTML: https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-23T09:32:04Z] fetch HTML: https://finance.yahoo.com/quote/CL%3DF/
+[2026-04-23T09:32:16Z] wrote state.json + state.js (prob=40% band=ORANGE raw=51/125) and appended history.jsonl + history.js
+[2026-04-23T09:32:16Z] === update-indicator END ===
+[2026-04-23T10:27:14Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T10:27:14Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T10:27:15Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T10:27:16Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T10:27:18Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T10:27:19Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T10:27:20Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T10:27:22Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T10:27:23Z] fetch RSS: India+petrol+diesel+price+April+2026
+[2026-04-23T10:27:24Z] fetch RSS: India+LPG+cylinder+price+shortage
+[2026-04-23T10:27:25Z] fetch RSS: Russia+India+oil+imports+2026
+[2026-04-23T10:27:27Z] fetch RSS: OPEC+production+cut+April+2026
+[2026-04-23T10:27:28Z] fetch RSS: Bangladesh+energy+crisis+fuel+rationing
+[2026-04-23T10:27:29Z] fetch RSS: Pakistan+four+day+workweek+energy+crisis
+[2026-04-23T10:27:30Z] fetch RSS: Iran+ceasefire+April+2026+ships+seized
+[2026-04-23T10:27:32Z] fetch RSS: EIA+STEO+Brent+forecast+2026
+[2026-04-23T10:27:33Z] fetch RSS: INR+rupee+dollar+exchange+rate+April+2026
+[2026-04-23T10:27:34Z] fetch RSS: Reliance+Jamnagar+BPCL+IOC+HPCL+stock+2026
+[2026-04-23T10:27:35Z] fetch RSS: aviation+fuel+ATF+jet+kerosene+India
+[2026-04-23T10:27:37Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T10:27:38Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T10:27:40Z] fetch HTML: https://www.marketwatch.com/investing/future/brent%20crude
+[2026-04-23T10:27:40Z] fetch HTML: https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-23T10:27:42Z] fetch HTML: https://finance.yahoo.com/quote/CL%3DF/
+[2026-04-23T10:27:44Z] wrote state.json + state.js (prob=40% band=ORANGE raw=51/125) and appended history.jsonl + history.js
+[2026-04-23T10:27:44Z] === update-indicator END ===
+[2026-04-23T10:28:35Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T10:28:35Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T10:28:35Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T10:28:36Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T10:28:37Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T10:28:37Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T10:28:38Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T10:28:38Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T10:28:39Z] fetch RSS: India+petrol+diesel+price+April+2026
+[2026-04-23T10:28:39Z] fetch RSS: India+LPG+cylinder+price+shortage
+[2026-04-23T10:28:40Z] fetch RSS: Russia+India+oil+imports+2026
+[2026-04-23T10:28:41Z] fetch RSS: OPEC+production+cut+April+2026
+[2026-04-23T10:28:41Z] fetch RSS: Bangladesh+energy+crisis+fuel+rationing
+[2026-04-23T10:28:42Z] fetch RSS: Pakistan+four+day+workweek+energy+crisis
+[2026-04-23T10:28:42Z] fetch RSS: Iran+ceasefire+April+2026+ships+seized
+[2026-04-23T10:28:43Z] fetch RSS: EIA+STEO+Brent+forecast+2026
+[2026-04-23T10:28:44Z] fetch RSS: INR+rupee+dollar+exchange+rate+April+2026
+[2026-04-23T10:28:44Z] fetch RSS: Reliance+Jamnagar+BPCL+IOC+HPCL+stock+2026
+[2026-04-23T10:28:45Z] fetch RSS: aviation+fuel+ATF+jet+kerosene+India
+[2026-04-23T10:28:45Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T10:28:46Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T10:28:48Z] fetch HTML: https://www.marketwatch.com/investing/future/brent%20crude
+[2026-04-23T10:28:48Z] fetch HTML: https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-23T10:28:50Z] fetch HTML: https://finance.yahoo.com/quote/CL%3DF/
+[2026-04-23T10:28:53Z] wrote state.json + state.js (prob=40% band=ORANGE raw=51/125) and appended history.jsonl + history.js
+[2026-04-23T10:28:53Z] === update-indicator END ===
+[2026-04-23T11:20:51Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T11:20:51Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T11:20:52Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T11:20:53Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T11:20:55Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T11:20:56Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T11:20:57Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T11:20:58Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T11:20:59Z] fetch RSS: India+petrol+diesel+price+April+2026
+[2026-04-23T11:21:00Z] fetch RSS: India+LPG+cylinder+price+shortage
+[2026-04-23T11:21:02Z] fetch RSS: Russia+India+oil+imports+2026
+[2026-04-23T11:21:03Z] fetch RSS: OPEC+production+cut+April+2026
+[2026-04-23T11:21:05Z] fetch RSS: Bangladesh+energy+crisis+fuel+rationing
+[2026-04-23T11:21:05Z] fetch RSS: Pakistan+four+day+workweek+energy+crisis
+[2026-04-23T11:21:07Z] fetch RSS: Iran+ceasefire+April+2026+ships+seized
+[2026-04-23T11:21:08Z] fetch RSS: EIA+STEO+Brent+forecast+2026
+[2026-04-23T11:21:09Z] fetch RSS: INR+rupee+dollar+exchange+rate+April+2026
+[2026-04-23T11:21:10Z] fetch RSS: Reliance+Jamnagar+BPCL+IOC+HPCL+stock+2026
+[2026-04-23T11:21:11Z] fetch RSS: aviation+fuel+ATF+jet+kerosene+India
+[2026-04-23T11:21:21Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T11:21:22Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T11:21:24Z] fetch HTML: https://www.marketwatch.com/investing/future/brent%20crude
+[2026-04-23T11:21:24Z] fetch HTML: https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-23T11:21:26Z] fetch HTML: https://finance.yahoo.com/quote/CL%3DF/
+[2026-04-23T11:21:28Z] fetch HTML: https://finance.yahoo.com/quote/CL=F/
+[2026-04-23T11:21:32Z] fetch HTML: https://www.marketwatch.com/investing/future/crude%20oil%20-%20electronic
+[2026-04-23T11:21:32Z] fetch HTML: https://www.investing.com/commodities/crude-oil
+[2026-04-23T11:21:33Z] fetch HTML: https://tradingeconomics.com/commodity/crude-oil
+[2026-04-23T11:21:36Z] wrote state.json + state.js (prob=40% band=ORANGE raw=51/125) and appended history.jsonl + history.js
+[2026-04-23T11:21:36Z] === update-indicator END ===
+[2026-04-23T11:40:04Z] === update-indicator START (dry_run=0 force=0) ===
+[2026-04-23T11:40:04Z] Last update was 0h ago; skipping (use --force to override).
+[2026-04-23T11:40:53Z] === update-indicator START (dry_run=0 force=1) ===
+[2026-04-23T11:40:53Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T11:40:54Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T11:40:55Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T11:40:57Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T11:40:58Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T11:40:59Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T11:41:00Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T11:41:01Z] fetch RSS: India+petrol+diesel+price+April+2026
+[2026-04-23T11:41:03Z] fetch RSS: India+LPG+cylinder+price+shortage
+[2026-04-23T11:41:04Z] fetch RSS: Russia+India+oil+imports+2026
+[2026-04-23T11:41:05Z] fetch RSS: OPEC+production+cut+April+2026
+[2026-04-23T11:41:07Z] fetch RSS: Bangladesh+energy+crisis+fuel+rationing
+[2026-04-23T11:41:08Z] fetch RSS: Pakistan+four+day+workweek+energy+crisis
+[2026-04-23T11:41:09Z] fetch RSS: Iran+ceasefire+April+2026+ships+seized
+[2026-04-23T11:41:11Z] fetch RSS: EIA+STEO+Brent+forecast+2026
+[2026-04-23T11:41:12Z] fetch RSS: INR+rupee+dollar+exchange+rate+April+2026
+[2026-04-23T11:41:13Z] fetch RSS: Reliance+Jamnagar+BPCL+IOC+HPCL+stock+2026
+[2026-04-23T11:41:14Z] fetch RSS: aviation+fuel+ATF+jet+kerosene+India
+[2026-04-23T11:41:15Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T11:41:16Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T11:41:20Z] fetch HTML: https://www.marketwatch.com/investing/future/brent%20crude
+[2026-04-23T11:41:20Z] fetch HTML: https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-23T11:41:21Z] fetch HTML: https://finance.yahoo.com/quote/CL%3DF/
+[2026-04-23T11:41:25Z] fetch HTML: https://finance.yahoo.com/quote/CL=F/
+[2026-04-23T11:41:27Z] fetch HTML: https://www.marketwatch.com/investing/future/crude%20oil%20-%20electronic
+[2026-04-23T11:41:27Z] fetch HTML: https://www.investing.com/commodities/crude-oil
+[2026-04-23T11:41:28Z] fetch HTML: https://tradingeconomics.com/commodity/crude-oil
+[2026-04-23T11:41:32Z] wrote state.json + state.js (prob=40% band=ORANGE raw=51/125) and appended history.jsonl + history.js
+[2026-04-23T11:41:32Z] === update-indicator END ===
+[2026-04-23T12:47:30Z] === update-indicator START (dry_run=0 force=0) ===
+[2026-04-23T12:47:31Z] Last update was 1h ago; skipping (use --force to override).
+[2026-04-23T18:47:03Z] === update-indicator START (dry_run=0 force=0) ===
+[2026-04-23T18:47:04Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-23T18:47:05Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-23T18:47:06Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-23T18:47:07Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-23T18:47:08Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-23T18:47:10Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-23T18:47:11Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-23T18:47:12Z] fetch RSS: India+petrol+diesel+price+April+2026
+[2026-04-23T18:47:13Z] fetch RSS: India+LPG+cylinder+price+shortage
+[2026-04-23T18:47:15Z] fetch RSS: Russia+India+oil+imports+2026
+[2026-04-23T18:47:16Z] fetch RSS: OPEC+production+cut+April+2026
+[2026-04-23T18:47:17Z] fetch RSS: Bangladesh+energy+crisis+fuel+rationing
+[2026-04-23T18:47:18Z] fetch RSS: Pakistan+four+day+workweek+energy+crisis
+[2026-04-23T18:47:19Z] fetch RSS: Iran+ceasefire+April+2026+ships+seized
+[2026-04-23T18:47:21Z] fetch RSS: EIA+STEO+Brent+forecast+2026
+[2026-04-23T18:47:22Z] fetch RSS: INR+rupee+dollar+exchange+rate+April+2026
+[2026-04-23T18:47:23Z] fetch RSS: Reliance+Jamnagar+BPCL+IOC+HPCL+stock+2026
+[2026-04-23T18:47:24Z] fetch RSS: aviation+fuel+ATF+jet+kerosene+India
+[2026-04-23T18:47:25Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-23T18:47:26Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T18:49:24Z] WARN: HTML fetch failed for https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-23T18:49:24Z] fetch HTML: https://www.marketwatch.com/investing/future/brent%20crude
+[2026-04-23T18:49:24Z] fetch HTML: https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-23T18:49:25Z] fetch HTML: https://finance.yahoo.com/quote/CL%3DF/
+[2026-04-23T18:49:27Z] fetch HTML: https://finance.yahoo.com/quote/CL=F/
+[2026-04-23T18:49:29Z] fetch HTML: https://www.marketwatch.com/investing/future/crude%20oil%20-%20electronic
+[2026-04-23T18:49:29Z] fetch HTML: https://www.investing.com/commodities/crude-oil
+[2026-04-23T18:50:30Z] WARN: HTML fetch failed for https://www.investing.com/commodities/crude-oil
+[2026-04-23T18:50:30Z] fetch HTML: https://tradingeconomics.com/commodity/crude-oil
+[2026-04-23T18:50:34Z] wrote state.json + state.js (prob=40% band=ORANGE raw=51/125) and appended history.jsonl + history.js
+[2026-04-23T18:50:34Z] === update-indicator END ===
+[2026-04-24T00:58:01Z] === update-indicator START (dry_run=0 force=0) ===
+[2026-04-24T00:58:01Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-24T00:58:02Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-24T00:58:03Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-24T00:58:04Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-24T00:58:05Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-24T00:58:06Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-24T00:58:07Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-24T00:58:08Z] fetch RSS: India+petrol+diesel+price+April+2026
+[2026-04-24T00:58:09Z] fetch RSS: India+LPG+cylinder+price+shortage
+[2026-04-24T00:58:10Z] fetch RSS: Russia+India+oil+imports+2026
+[2026-04-24T00:58:11Z] fetch RSS: OPEC+production+cut+April+2026
+[2026-04-24T00:58:12Z] fetch RSS: Bangladesh+energy+crisis+fuel+rationing
+[2026-04-24T00:58:13Z] fetch RSS: Pakistan+four+day+workweek+energy+crisis
+[2026-04-24T00:58:14Z] fetch RSS: Iran+ceasefire+April+2026+ships+seized
+[2026-04-24T00:58:15Z] fetch RSS: EIA+STEO+Brent+forecast+2026
+[2026-04-24T00:58:16Z] fetch RSS: INR+rupee+dollar+exchange+rate+April+2026
+[2026-04-24T00:58:17Z] fetch RSS: Reliance+Jamnagar+BPCL+IOC+HPCL+stock+2026
+[2026-04-24T00:58:17Z] fetch RSS: aviation+fuel+ATF+jet+kerosene+India
+[2026-04-24T00:58:18Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-24T00:58:22Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-24T00:58:25Z] fetch HTML: https://www.marketwatch.com/investing/future/brent%20crude
+[2026-04-24T00:58:25Z] fetch HTML: https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-24T01:13:04Z] WARN: HTML fetch failed for https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-24T01:13:04Z] fetch HTML: https://finance.yahoo.com/quote/CL%3DF/
+[2026-04-24T01:13:06Z] fetch HTML: https://finance.yahoo.com/quote/CL=F/
+[2026-04-24T01:13:08Z] fetch HTML: https://www.marketwatch.com/investing/future/crude%20oil%20-%20electronic
+[2026-04-24T01:13:08Z] fetch HTML: https://www.investing.com/commodities/crude-oil
+[2026-04-24T01:13:10Z] fetch HTML: https://tradingeconomics.com/commodity/crude-oil
+[2026-04-24T01:13:13Z] wrote state.json + state.js (prob=40% band=ORANGE raw=51/125) and appended history.jsonl + history.js
+[2026-04-24T01:13:13Z] === update-indicator END ===
+[2026-04-24T06:59:20Z] === update-indicator START (dry_run=0 force=0) ===
+[2026-04-24T06:59:21Z] fetch RSS: Strait+of+Hormuz+blockade+April+2026
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for Strait+of+Hormuz+blockade+April+2026
+[2026-04-24T06:59:21Z] fetch RSS: Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for Iran+strikes+Saudi+UAE+oil+infrastructure
+[2026-04-24T06:59:21Z] fetch RSS: Brent+crude+oil+price+spot
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for Brent+crude+oil+price+spot
+[2026-04-24T06:59:21Z] fetch RSS: US+ground+troops+Iran+war+invasion
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for US+ground+troops+Iran+war+invasion
+[2026-04-24T06:59:21Z] fetch RSS: India+strategic+petroleum+reserve+depleted
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for India+strategic+petroleum+reserve+depleted
+[2026-04-24T06:59:21Z] fetch RSS: India+refinery+attack+Reliance+Jamnagar
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for India+refinery+attack+Reliance+Jamnagar
+[2026-04-24T06:59:21Z] fetch RSS: India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for India+lockdown+LPG+rationing+Hardeep+Puri
+[2026-04-24T06:59:21Z] fetch RSS: India+petrol+diesel+price+April+2026
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for India+petrol+diesel+price+April+2026
+[2026-04-24T06:59:21Z] fetch RSS: India+LPG+cylinder+price+shortage
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for India+LPG+cylinder+price+shortage
+[2026-04-24T06:59:21Z] fetch RSS: Russia+India+oil+imports+2026
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for Russia+India+oil+imports+2026
+[2026-04-24T06:59:21Z] fetch RSS: OPEC+production+cut+April+2026
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for OPEC+production+cut+April+2026
+[2026-04-24T06:59:21Z] fetch RSS: Bangladesh+energy+crisis+fuel+rationing
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for Bangladesh+energy+crisis+fuel+rationing
+[2026-04-24T06:59:21Z] fetch RSS: Pakistan+four+day+workweek+energy+crisis
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for Pakistan+four+day+workweek+energy+crisis
+[2026-04-24T06:59:21Z] fetch RSS: Iran+ceasefire+April+2026+ships+seized
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for Iran+ceasefire+April+2026+ships+seized
+[2026-04-24T06:59:21Z] fetch RSS: EIA+STEO+Brent+forecast+2026
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for EIA+STEO+Brent+forecast+2026
+[2026-04-24T06:59:21Z] fetch RSS: INR+rupee+dollar+exchange+rate+April+2026
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for INR+rupee+dollar+exchange+rate+April+2026
+[2026-04-24T06:59:21Z] fetch RSS: Reliance+Jamnagar+BPCL+IOC+HPCL+stock+2026
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for Reliance+Jamnagar+BPCL+IOC+HPCL+stock+2026
+[2026-04-24T06:59:21Z] fetch RSS: aviation+fuel+ATF+jet+kerosene+India
+[2026-04-24T06:59:21Z] WARN: RSS fetch failed for aviation+fuel+ATF+jet+kerosene+India
+[2026-04-24T06:59:21Z] fetch HTML: https://www.investing.com/commodities/brent-oil
+[2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://www.investing.com/commodities/brent-oil
+[2026-04-24T06:59:21Z] fetch HTML: https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://tradingeconomics.com/commodity/brent-crude-oil
+[2026-04-24T06:59:21Z] fetch HTML: https://www.marketwatch.com/investing/future/brent%20crude
+[2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://www.marketwatch.com/investing/future/brent%20crude
+[2026-04-24T06:59:21Z] fetch HTML: https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://finance.yahoo.com/quote/BZ%3DF/
+[2026-04-24T06:59:21Z] fetch HTML: https://finance.yahoo.com/quote/CL%3DF/
+[2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://finance.yahoo.com/quote/CL%3DF/
+[2026-04-24T06:59:21Z] fetch HTML: https://finance.yahoo.com/quote/CL=F/
+[2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://finance.yahoo.com/quote/CL=F/
+[2026-04-24T06:59:21Z] fetch HTML: https://www.marketwatch.com/investing/future/crude%20oil%20-%20electronic
+[2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://www.marketwatch.com/investing/future/crude%20oil%20-%20electronic
+[2026-04-24T06:59:21Z] fetch HTML: https://www.investing.com/commodities/crude-oil
+[2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://www.investing.com/commodities/crude-oil
+[2026-04-24T06:59:21Z] fetch HTML: https://tradingeconomics.com/commodity/crude-oil
+[2026-04-24T06:59:21Z] WARN: HTML fetch failed for https://tradingeconomics.com/commodity/crude-oil
+[2026-04-24T06:59:22Z] wrote state.json + state.js (prob=16% band=YELLOW raw=20/125) and appended history.jsonl + history.js
+[2026-04-24T06:59:22Z] === update-indicator END ===

@@ -1,0 +1,94 @@
+{
+  "captured_at": "2026-04-23",
+  "purpose": "Source ledger for India energy lockdown thesis. Every claim in THESIS_2026-04-23.md must trace to a source here. Run scripts/wayback-snapshot.sh against these to defend against link-rot.",
+
+  "war_status": [
+    {"id": "war_cnn_apr22", "claim": "Trump extended ceasefire Apr 22; Iran continued provocations", "url": "https://www.cnn.com/2026/04/22/world/live-news/iran-war-us-trump-blockade-ceasefire", "type": "live_news", "quality": "high"},
+    {"id": "war_npr_apr22", "claim": "Iran seized 2 ships in Strait of Hormuz Apr 22", "url": "https://www.npr.org/2026/04/22/nx-s1-5795405/iran-middle-east-updates", "type": "live_news", "quality": "high"},
+    {"id": "war_aljazeera_explainer", "claim": "Background of US-Iran standoff over Hormuz; war began Feb 28 2026", "url": "https://www.aljazeera.com/news/2026/4/19/what-to-know-about-us-iran-standoff-over-the-strait-of-hormuz", "type": "explainer", "quality": "high"},
+    {"id": "war_wikipedia_hormuz", "claim": "21+ confirmed Iranian attacks on merchant ships, sea mines laid; ~13 mb/d disruption", "url": "https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis", "type": "encyclopedia", "quality": "medium"},
+    {"id": "war_nbc_apr22", "claim": "Iran seizes ships after Trump extends ceasefire", "url": "https://www.nbcnews.com/world/iran/live-blog/live-updates-iran-trump-ceasefire-hormuz-attack-peace-talks-israel-rcna341361", "type": "live_news", "quality": "high"},
+    {"id": "war_cnbc_apr20", "claim": "Resumption of hostilities; ceasefire toward brink", "url": "https://www.cnbc.com/2026/04/20/us-iran-war-middle-east-conflict-peace-deal-strait-hormuz-shipping-ceasefire-tensions.html", "type": "news", "quality": "high"}
+  ],
+
+  "supply_demand": [
+    {"id": "iea_omr_apr2026", "claim": "Global supply plunged 10.1 mb/d to 97 mb/d in March; largest disruption in history", "url": "https://www.iea.org/reports/oil-market-report-april-2026", "type": "iea_official", "quality": "tier1"},
+    {"id": "eia_steo_apr2026", "claim": "Brent peaks Q2 at $115/b then eases; demand growth revised down to +0.6 mb/d", "url": "https://www.eia.gov/outlooks/steo/pdf/steo_full.pdf", "type": "eia_official", "quality": "tier1"},
+    {"id": "eia_steo_main", "claim": "Hormuz carries ~20% of global oil; market dynamics in Q2 2026", "url": "https://www.eia.gov/outlooks/steo/", "type": "eia_official", "quality": "tier1"},
+    {"id": "iea_omr_mar2026", "claim": "March OMR baseline data on supply/demand", "url": "https://www.iea.org/reports/oil-market-report-march-2026", "type": "iea_official", "quality": "tier1"},
+    {"id": "aljazeera_iea_apr14", "claim": "Global oil demand to plunge -2.3 mb/d in April per IEA", "url": "https://www.aljazeera.com/amp/news/2026/4/14/global-oil-demand-to-plunge-amid-middle-east-war-disruptions", "type": "news_quoting_iea", "quality": "high"},
+    {"id": "fortune_demand_destruction_apr16", "claim": "Oil prices falling for wrong reason — demand destruction", "url": "https://fortune.com/2026/04/16/oil-prices-demand-destruction-iran-war-renewable-energy-push/", "type": "news_analysis", "quality": "medium"}
+  ],
+
+  "oil_prices_positioning": [
+    {"id": "barchart_brent_apr26", "claim": "Brent April 2026 futures price live", "url": "https://www.barchart.com/futures/quotes/CBJ26", "type": "market_data", "quality": "high"},
+    {"id": "barchart_wti_apr26", "claim": "WTI April 2026 futures price live", "url": "https://www.barchart.com/futures/quotes/CLJ26", "type": "market_data", "quality": "high"},
+    {"id": "cnbc_oil_apr22", "claim": "WTI ~$92.96, Brent above $98 Apr 22-23", "url": "https://www.cnbc.com/2026/04/22/oil-price-wti-brent-iran-ceasefire-extension-clouds-outlook.html", "type": "news", "quality": "high"},
+    {"id": "fortune_oil_apr20", "claim": "Brent $86.84 vs WTI $79.78 mid-April; spread $7", "url": "https://fortune.com/article/price-of-oil-04-20-2026/", "type": "news", "quality": "high"},
+    {"id": "techi_oil_today", "claim": "WTI $79, Brent $86 Hormuz Open ceasefire holds", "url": "https://www.techi.com/oil-price-today/", "type": "news", "quality": "medium"},
+    {"id": "torres_cftc_request", "claim": "Rep. Ritchie Torres asked CFTC to investigate $760M oil futures trade placed minutes before Iran's Hormuz announcement", "url": "https://ritchietorres.house.gov/posts/rep-ritchie-torres-calls-on-cftc-to-investigate-760-million-oil-futures-trade-placed-minutes-before-irans-strait-of-hormuz-announcement", "type": "official_govt", "quality": "tier1"},
+    {"id": "cftc_cot_petroleum", "claim": "CFTC Commitments of Traders petroleum data", "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm", "type": "cftc_official", "quality": "tier1"},
+    {"id": "macromicro_managed_money", "claim": "WTI managed money 200,130 long vs 101,762 short Apr 14", "url": "https://en.macromicro.me/series/8296/crude-oil-futures-and-options-manage-money-net-position", "type": "data_aggregator", "quality": "high"}
+  ],
+
+  "india_imports": [
+    {"id": "puri_70pct_off_hormuz", "claim": "70% of India's crude imports shifted away from Hormuz per Petroleum Min Hardeep Puri Mar 2026", "url": "https://www.theresearchers.us/2026/03/12/india-no-fuel-shortage-crude-imports/", "type": "minister_statement", "quality": "high"},
+    {"id": "bloomberg_india_30m_russian", "claim": "India bought 30M barrels Russian crude after US waiver", "url": "https://www.bloomberg.com/news/articles/2026-03-10/india-snaps-up-30-million-barrels-of-russian-oil-after-us-waiver", "type": "tier1_news", "quality": "tier1"},
+    {"id": "discovery_india_94pct_russia_mar", "claim": "India Russia oil imports +94% MoM March 2026 to 2.06 mb/d", "url": "https://discoveryalert.com.au/india-procurement-strategy-supply-chain-disruptions-2026/", "type": "industry_analysis", "quality": "medium"},
+    {"id": "subkuz_iraq_top_feb", "claim": "Iraq overtook Russia as #1 supplier in Feb 2026 (briefly)", "url": "https://subkuz.com/news/english/details/iraq-top-oil-supplier-india-february-2026-russia-imports-decline/176622", "type": "news", "quality": "medium"},
+    {"id": "diplomat_gulf_war_3", "claim": "Gulf War 3.0: How India is securing oil supplies", "url": "https://thediplomat.com/2026/03/gulf-war-3-0-how-is-india-securing-its-oil-supplies/", "type": "analysis", "quality": "high"},
+    {"id": "india_briefing_hormuz_mitigation", "claim": "Strait of Hormuz & India's oil supply: import dependencies & mitigation", "url": "https://www.india-briefing.com/news/indias-oil-supply-hormuz-diversification-strategy-43381.html/", "type": "analysis", "quality": "high"},
+    {"id": "kpler_rosneft_lukoil", "claim": "Rosneft and Lukoil sanctions: how India, China, Turkey adapt", "url": "https://www.kpler.com/blog/rosneft-and-lukoil-sanctions-are-live-how-india-china-and-turkey-adapt-rather-than-exit", "type": "industry_analysis", "quality": "high"},
+    {"id": "vortexa_india_russian_resilience", "claim": "India likely to maintain Russian oil purchases", "url": "https://www.vortexa.com/insights/india-maintain-russian-oil-imports", "type": "industry_analysis", "quality": "high"},
+    {"id": "cera_february_russian_exports", "claim": "China 48% / India 37% of Russia's crude exports Feb 2026", "url": "https://energyandcleanair.org/february-2026-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/", "type": "research", "quality": "high"}
+  ],
+
+  "india_reserves": [
+    {"id": "isprl_official", "claim": "Indian Strategic Petroleum Reserves Ltd official site", "url": "https://www.isprlindia.com/", "type": "govt_official", "quality": "tier1"},
+    {"id": "spr_wikipedia", "claim": "India SPR baseline capacity and locations", "url": "https://en.wikipedia.org/wiki/Strategic_Petroleum_Reserve_(India)", "type": "encyclopedia", "quality": "medium"},
+    {"id": "discovery_spr_53lakh", "claim": "India SPR 53 lakh tonnes; 60-day cover including commercial = 74 days", "url": "https://discoveryalert.com.au/india-energy-security-strategic-reserve-2026/", "type": "industry_analysis", "quality": "high"},
+    {"id": "organiser_60day_assurance", "claim": "Govt debunks 5-10 day reserve claim; assures 60-day supply cover", "url": "https://organiser.org/2026/03/29/346210/bharat/no-fuel-crisis-in-india-govt-debunks-5-10-days-oil-reserve-claim-assures-60-day-supply-cover/", "type": "govt_aligned_news", "quality": "medium"},
+    {"id": "vcnow_lpg_crisis", "claim": "India LPG strategic storage ~5 days of demand; HPCL Mangalore cavern 140k tonnes", "url": "https://learn.vcnow.in/india-lpg-crisis-2026/", "type": "industry_analysis", "quality": "high"},
+    {"id": "theprint_spr_constraints", "claim": "India strategic oil reserves tell tale of structural constraints, stalled expansion", "url": "https://theprint.in/economy/indias-strategic-oil-reserves-tell-a-tale-of-structural-constraints-stalled-expansion-heres-why/2889144/", "type": "tier1_news", "quality": "high"}
+  ],
+
+  "india_lockdown_status": [
+    {"id": "ddnews_no_lockdown", "claim": "Govt assures no lockdown amid West Asia crisis; fuel prices stabilised", "url": "https://ddnews.gov.in/en/no-lockdown-planned-government-assures-amid-west-asia-crisis-fuel-prices-stabilised/", "type": "state_broadcaster", "quality": "tier1"},
+    {"id": "puri_clarifies_no_lockdown", "claim": "Min. Hardeep Singh Puri clarifies no lockdown planned", "url": "https://www.newsonair.gov.in/union-minister-for-petroleum-hardeep-singh-puri-clarifies-no-lockdown-planned-in-india/", "type": "minister_statement", "quality": "tier1"},
+    {"id": "aljazeera_lockdown_false", "claim": "India lowers fuel taxes; says lockdown rumours 'completely false'", "url": "https://www.aljazeera.com/news/2026/3/27/india-slashes-petrol-diesel-import-taxes-as-fuel-prices-remain-high", "type": "tier1_news", "quality": "high"},
+    {"id": "indiatv_puri_lpg", "claim": "Will India impose full lockdown amid LPG shortage? Hardeep Puri says no", "url": "https://www.indiatvnews.com/news/india/will-india-impose-full-lockdown-amid-lpg-shortage-hardeep-singh-puri-has-to-say-this-2026-03-27-1035275", "type": "news", "quality": "medium"},
+    {"id": "sundayguardian_lockdown_trends", "claim": "'Lockdown in India' trends amid Iran war fears, LPG crisis, PM Modi remarks", "url": "https://sundayguardianlive.com/india/lockdown-again-in-india-trends-amid-iran-war-fears-lpg-crisis-pm-modis-remarks-spark-speculation-heres-why-179141/", "type": "speculative_news", "quality": "low"},
+    {"id": "collegesimplified_factcheck", "claim": "Lockdown in India 2026 due to LPG/petrol shortage: fact check", "url": "https://www.collegesimplified.in/post/lockdown-in-india-2026-due-to-lpg-gas-and-petrol-shortage-fact-check", "type": "fact_check", "quality": "low"},
+    {"id": "news24_energy_lockdown", "claim": "What is 'Energy Lockdown' — Pakistan, Bangladesh enforce; could India be next?", "url": "https://news24online.com/world/what-is-energy-lockdown-as-war-disrupts-global-oil-supply-pakistan-bangladesh-and-several-other-countries-enforce-covid-like-restrictions-could-india-be-next/783780/", "type": "speculative_news", "quality": "low"},
+    {"id": "studyiq_lockdown_2026", "claim": "India Lockdown 2026: Is Another Lockdown Coming Amid Energy Crisis?", "url": "https://www.studyiq.com/articles/india-lockdown-2026/", "type": "exam_prep_aggregator", "quality": "low"},
+    {"id": "testbook_energy_lockdown", "claim": "Energy Lockdown In India 2026: Meaning, Crisis Management", "url": "https://testbook.com/news/energy-lockdown-in-india-2026/", "type": "exam_prep_aggregator", "quality": "low"}
+  ],
+
+  "regional_precedent": [
+    {"id": "aljazeera_bangladesh_universities", "claim": "Bangladesh shuts universities, limits fuel sale", "url": "https://www.aljazeera.com/news/2026/3/9/bangladesh-shuts-universities-limits-fuel-sale-as-iran-war-causes-shortage", "type": "tier1_news", "quality": "tier1"},
+    {"id": "wikipedia_bangladesh_2026_crisis", "claim": "2026 Bangladesh energy crisis full timeline", "url": "https://en.wikipedia.org/wiki/2026_Bangladesh_energy_crisis", "type": "encyclopedia", "quality": "medium"},
+    {"id": "dailystar_austerity", "claim": "Bangladesh austerity measures necessary move", "url": "https://www.thedailystar.net/opinion/editorial/news/austerity-measures-are-necessary-move-4142611", "type": "tier1_news", "quality": "high"},
+    {"id": "iea_crisis_tracker", "claim": "2026 Energy Crisis Policy Response Tracker", "url": "https://www.iea.org/data-and-statistics/data-tools/2026-energy-crisis-policy-response-tracker", "type": "iea_official", "quality": "tier1"},
+    {"id": "abhs_9countries", "claim": "Energy Lockdown: 9 Countries Are Rationing Power as Hormuz Stays Shut", "url": "https://www.abhs.in/blog/energy-lockdown-9-countries-hormuz-pakistan-bangladesh-oil-crisis-april-2026", "type": "blog_aggregator", "quality": "low"},
+    {"id": "world_energy_lockdown_dashboard", "claim": "World Energy Lockdown Monitor 2026 — live dashboard", "url": "https://worldenergylockdown.com/", "type": "dashboard", "quality": "medium"},
+    {"id": "musaffa_muslim_economies", "claim": "2026 Energy Shock impact on Muslim economies", "url": "https://academy.musaffa.com/muslim-majority-economies-2026-energy-shock-response/", "type": "industry_analysis", "quality": "low"},
+    {"id": "envblog_southasia_crisis", "claim": "South Asia Energy Crisis: Power Cuts, Fuel Costs, Growth Risks 2026", "url": "https://www.theenvironmentalblog.org/2026/03/energy-crisis-threatens-south-asias-growth/", "type": "industry_analysis", "quality": "low"}
+  ],
+
+  "india_fiscal_response": [
+    {"id": "pib_puri_only_country", "claim": "India is the only country where fuel prices have actually come down — Min. Puri", "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2038742&reg=3&lang=2", "type": "govt_official", "quality": "tier1"},
+    {"id": "pib_excise_slash", "claim": "Govt slashes excise duty on petrol and diesel to shield consumers and OMCs", "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2245970&reg=3&lang=1", "type": "govt_official", "quality": "tier1"},
+    {"id": "republic_excise_cut", "claim": "India cuts petrol excise to ₹3, diesel to zero", "url": "https://www.republicworld.com/business/india-cuts-petrol-excise-to-rs-3-and-diesel-to-zero-will-consumers-see-lower-pump-prices", "type": "news", "quality": "medium"},
+    {"id": "cnbc_india_huge_hit", "claim": "India takes 'huge hit' on tax revenue to keep fuel prices from surging", "url": "https://www.cnbc.com/amp/2026/03/27/india-fuel-tax-cut-oil-prices-iran-war-impact.html", "type": "tier1_news", "quality": "high"},
+    {"id": "wionews_excise_breakdown", "claim": "India cuts petrol+diesel taxes; FM Sitharaman explanation", "url": "https://www.wionews.com/india-news/big-relief-for-indian-consumers-petrol-excise-slashed-to-3-diesel-duty-cut-to-zero-as-oil-prices-bite-amid-iran-war-1774580655511", "type": "news", "quality": "medium"}
+  ],
+
+  "trust_tier_legend": {
+    "tier1": "Govt official, IEA, EIA, CFTC, named-minister direct quote, peer-reviewed, Bloomberg/Reuters/Al Jazeera primary",
+    "high": "Established news outlet (CNN, NPR, NBC, CNBC, The Print) with named sourcing",
+    "medium": "Industry analysis, encyclopedia, govt-aligned news, market data aggregator",
+    "low": "Speculative news, exam-prep aggregator, blog, fact-check site without primary sourcing"
+  },
+
+  "fabrication_rule": "If a claim cannot be sourced here, do not publish it. UNVERIFIED is a valid output. This dossier follows the same discipline as bryanjohnson-v3."
+}

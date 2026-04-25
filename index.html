@@ -722,9 +722,9 @@
 
     renderNews(s.news_feed || []);
     renderOilMarket(s.oil_market || {});
-    renderTimeline(s.war_timeline || []);
-    renderIndiaEnergy(s.india_energy || {});
-    renderRegional(s.regional_monitor || []);
+    renderTimeline(s.war_timeline || [], s.news_feed || [], s.captured_at);
+    renderIndiaEnergy(s.india_energy || {}, s.news_feed || []);
+    renderRegional(s.regional_monitor || [], s.news_feed || []);
     renderPredictionMarkets(s.prediction_markets || {});
 
     const countEl = document.getElementById('liveCount');
@@ -841,16 +841,45 @@
     }
   }
 
-  function renderTimeline(items){
+  function renderTimeline(items, newsFeed, capturedAt){
     const list = document.getElementById('timelineList');
     if (!list) return;
     list.innerHTML = '';
-    items.slice().reverse().forEach(it => {
+
+    // Auto-extend the timeline with breaking war/iran headlines from this cycle.
+    // Tagged "BREAKING" so users can tell live entries from the historical seed.
+    const today = (capturedAt || new Date().toISOString()).slice(0, 10);
+    const breakingTitles = new Set();
+    const seedTitles = new Set(items.map(i => (i.event || '').toLowerCase().slice(0, 50)));
+
+    const breakingEntries = (newsFeed || [])
+      .filter(n => (n.category === 'war' || n.trigger === 'indian_refinery')
+                   && (n.severity === 'critical' || n.severity === 'high'))
+      .filter(n => {
+        const key = (n.title || '').toLowerCase().slice(0, 50);
+        if (seedTitles.has(key) || breakingTitles.has(key)) return false;
+        breakingTitles.add(key);
+        return true;
+      })
+      .slice(0, 6)  // cap so timeline doesn't explode
+      .map(n => ({
+        date: today,
+        event: n.title,
+        severity: n.severity,
+        source: n.source,
+        breaking: true,
+      }));
+
+    // Merge: breaking at top (newest first), then seed in reverse-chrono
+    const merged = [...breakingEntries, ...items.slice().reverse()];
+
+    merged.forEach(it => {
       const item = document.createElement('div');
       item.className = 'timeline-item';
+      const breakingTag = it.breaking ? '<span style="background:var(--blood);color:var(--paper);font-family:JetBrains Mono,monospace;font-size:9px;padding:2px 7px;letter-spacing:0.16em;margin-right:8px">BREAKING</span>' : '';
       item.innerHTML = `
         <div class="timeline-dot ${it.severity || 'medium'}"></div>
-        <div class="timeline-date">${it.date}</div>
+        <div class="timeline-date">${breakingTag}${it.date}</div>
         <div class="timeline-event">${it.event}</div>
         <div class="timeline-source">${it.source || ''}</div>
       `;
@@ -858,7 +887,23 @@
     });
   }
 
-  function renderIndiaEnergy(ie){
+  function renderIndiaEnergy(ie, newsFeed){
+    // Auto-update consumer_impact text from freshest LPG/fuel headline this cycle
+    if (newsFeed && newsFeed.length) {
+      const latestLpg = newsFeed.find(n =>
+        n.trigger === 'india_lpg' || n.trigger === 'india_fuel' || n.trigger === 'india_lockdown'
+      );
+      if (latestLpg && ie) {
+        ie.consumer_impact = '"' + latestLpg.title + '" — ' + latestLpg.source;
+      }
+      // Auto-update govt_stance from latest govt-statement headline
+      const latestGovt = newsFeed.find(n =>
+        n.trigger === 'india_lockdown' && /no lockdown|denies|ruled out|adequate/i.test(n.title || '')
+      );
+      if (latestGovt && ie) {
+        ie.govt_stance = 'Latest: "' + latestGovt.title + '" — ' + latestGovt.source;
+      }
+    }
     if (!ie || !ie.imports_mix_pct) return;
     const mix = ie.imports_mix_pct;
     const colors = {russia:'#1F5F3F', iraq:'#B91C1C', saudi:'#B8860B', uae:'#7F1D1D', us:'#4A3F2E', other:'#D6CCAD'};
@@ -900,18 +945,36 @@
     if (stance) stance.textContent = (ie.govt_stance || '') + ' · Consumer impact: ' + (ie.consumer_impact || '');
   }
 
-  function renderRegional(items){
+  function renderRegional(items, newsFeed){
     const grid = document.getElementById('regionGrid');
     if (!grid) return;
     grid.innerHTML = '';
+
+    // For each country, find the freshest matching headline this cycle and surface as "Latest"
+    const findLatestFor = (country) => {
+      const cl = country.toLowerCase();
+      return (newsFeed || []).find(n => {
+        const t = (n.title || '').toLowerCase();
+        if (cl === 'bangladesh') return n.trigger === 'bangladesh' || t.includes('bangladesh');
+        if (cl === 'pakistan')   return n.trigger === 'pakistan'   || t.includes('pakistan');
+        if (cl === 'india')      return (n.category === 'india' && (n.severity === 'high' || n.severity === 'critical'));
+        return t.includes(cl);
+      });
+    };
+
     items.forEach(r => {
       const card = document.createElement('div');
       card.className = 'region-card ' + (r.severity || 'amber');
+      const latest = findLatestFor(r.country);
+      const latestRow = latest
+        ? `<div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--paper-line);font-family:'Instrument Serif',serif;font-size:13px;font-style:italic;color:var(--ink-soft);line-height:1.4"><strong style="color:var(--blood);font-style:normal;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em">LATEST</strong> ${latest.title} <span style="color:var(--ink-soft);font-size:11px">— ${latest.source}</span></div>`
+        : '';
       card.innerHTML = `
         <div class="region-country">${r.country}</div>
         <div class="region-status ${r.severity || 'amber'}">${r.status}</div>
         <div class="region-measures">${r.measures}</div>
         <div class="region-dep">Import dependence: ${r.import_dep_pct}%</div>
+        ${latestRow}
       `;
       grid.appendChild(card);
     });

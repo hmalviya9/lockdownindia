@@ -36,11 +36,15 @@ log()          { echo "[$(ts_iso)] $*" | tee -a "$LOG"; }
 
 log "=== update-indicator START (dry_run=$DRY_RUN force=$FORCE) ==="
 
-# Freshness check — extract captured_at from state.json without jq
+# Freshness check — extract captured_at from state.json without jq.
+# Works on both BSD/macOS (date -j -u -f) and GNU/Linux (date -u -d) for portability.
 if [ -f "$STATE" ] && [ "$FORCE" -eq 0 ]; then
   last_iso=$(grep -E '"captured_at"' "$STATE" | head -1 | sed -E 's/.*"captured_at"[[:space:]]*:[[:space:]]*"([^"]*)".*/\1/')
   if [ -n "${last_iso:-}" ]; then
-    last_epoch=$(date -j -u -f "%Y-%m-%dT%H:%M:%SZ" "$last_iso" +%s 2>/dev/null || echo 0)
+    # Try BSD/macOS first, fall back to GNU/Linux date parser
+    last_epoch=$(date -j -u -f "%Y-%m-%dT%H:%M:%SZ" "$last_iso" +%s 2>/dev/null \
+              || date -u -d "$last_iso" +%s 2>/dev/null \
+              || echo 0)
     now_epoch=$(date -u +%s)
     age_hours=$(( (now_epoch - last_epoch) / 3600 ))
     if [ "$age_hours" -ge 0 ] && [ "$age_hours" -lt 5 ]; then
@@ -713,6 +717,28 @@ else
   } > "$ROOT/history.js"
 
   log "wrote state.json + state.js (prob=$PROB% band=$BAND raw=$RAW/$MAX) and appended history.jsonl + history.js"
+
+  # Auto-deploy to Vercel (lockdownindia.vercel.app) after each successful update.
+  # Token is stored in macOS Keychain — never in this script.
+  if command -v security >/dev/null 2>&1; then
+    VERCEL_TOKEN=$(security find-generic-password -a "$USER" -s "lockdown-indicator-vercel-token" -w 2>/dev/null || true)
+    if [ -n "${VERCEL_TOKEN:-}" ]; then
+      VERCEL_BIN=""
+      for candidate in "/Users/$USER/.hermes/node/lib/node_modules/vercel/dist/index.js" "$(command -v vercel 2>/dev/null)"; do
+        if [ -n "$candidate" ] && [ -f "$candidate" ]; then VERCEL_BIN="$candidate"; break; fi
+      done
+      log "deploying to Vercel (lockdownindia.vercel.app)..."
+      cd "$ROOT"
+      if [ -n "$VERCEL_BIN" ] && echo "$VERCEL_BIN" | grep -q "\.js$"; then
+        deploy_out=$(VERCEL_TELEMETRY_DISABLED=1 node "$VERCEL_BIN" deploy --prod --yes --name=lockdownindia --token="$VERCEL_TOKEN" 2>&1 | tail -3)
+      else
+        deploy_out=$(VERCEL_TELEMETRY_DISABLED=1 npx --yes vercel deploy --prod --yes --name=lockdownindia --token="$VERCEL_TOKEN" 2>&1 | tail -3)
+      fi
+      log "vercel deploy: $deploy_out"
+    else
+      log "WARN: no Vercel token in Keychain (key 'lockdown-indicator-vercel-token') — skipping deploy. To enable: security add-generic-password -a \$USER -s lockdown-indicator-vercel-token -w YOUR_TOKEN -U"
+    fi
+  fi
 fi
 
 log "=== update-indicator END ==="

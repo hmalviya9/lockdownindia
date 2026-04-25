@@ -1,0 +1,14 @@
+# macOS / IDE noise
+.DS_Store
+.idea/
+.vscode/
+
+# Local launchd-only artefacts (the cloud worker writes its own logs)
+scripts/launchd.out.log
+scripts/launchd.err.log
+scripts/update.log
+
+# Vercel local runtime
+.vercel/
+node_modules/
+.vercel

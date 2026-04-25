@@ -1,0 +1,44 @@
+name: Update Lockdown Indicator
+
+on:
+  schedule:
+    # Every 6 hours at :15 past — UTC
+    - cron: '15 */6 * * *'
+  workflow_dispatch:  # allow manual trigger from the Actions tab
+
+permissions:
+  contents: write  # needed to commit state.json/state.js back to the repo
+
+concurrency:
+  group: update-indicator
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run indicator worker
+        run: |
+          chmod +x ./scripts/update-indicator.sh
+          ./scripts/update-indicator.sh --force
+
+      - name: Commit + push updated state
+        run: |
+          git config user.name  "lockdown-indicator-bot"
+          git config user.email "lockdown-indicator-bot@users.noreply.github.com"
+
+          # Add the files that change every cycle
+          git add state.json state.js history.jsonl history.js scripts/update.log 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "No state change this cycle."
+            exit 0
+          fi
+
+          git commit -m "auto-update indicator $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push

@@ -6,3 +6,7 @@
 {"ts":"2026-04-24T12:19:12Z","prob":40,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 51/125; brent=106.30; refinery_attack=false"}
 {"ts":"2026-04-24T12:44:08Z","prob":40,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 51/125; brent=106.30; refinery_attack=false"}
 {"ts":"2026-04-24T12:45:34Z","prob":40,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 51/125; brent=106.30; refinery_attack=false"}
+{"ts":"2026-04-24T19:08:57Z","prob":44,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 55/125; brent=125.32; refinery_attack=false"}
+{"ts":"2026-04-25T01:08:58Z","prob":51,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 64/125; brent=106.02; refinery_attack=false"}
+{"ts":"2026-04-25T03:15:59Z","prob":40,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 51/125; brent=106.02; refinery_attack=false"}
+{"ts":"2026-04-25T03:22:08Z","prob":40,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 51/125; brent=106.02; refinery_attack=false"}

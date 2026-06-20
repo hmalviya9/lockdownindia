@@ -460,4 +460,6 @@ window.HISTORY = [
 {"ts":"2026-06-19T15:43:16Z","prob":27,"band":"YELLOW","method":"automated_rss_market_scrape","note":"raw 34/125; brent=79.43; refinery_attack=false"}
 ,
 {"ts":"2026-06-19T20:03:55Z","prob":37,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 47/125; brent=79.43; refinery_attack=false"}
+,
+{"ts":"2026-06-20T04:41:16Z","prob":37,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 47/125; brent=79.20; refinery_attack=false"}
 ];

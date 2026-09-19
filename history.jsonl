@@ -583,3 +583,4 @@
 {"ts":"2026-09-19T04:39:43Z","prob":37,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 47/125; brent=71.79; refinery_attack=false"}
 {"ts":"2026-09-19T11:01:50Z","prob":49,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 62/125; brent=181.29; refinery_attack=false"}
 {"ts":"2026-09-19T15:53:58Z","prob":44,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 55/125; brent=111.72; refinery_attack=false"}
+{"ts":"2026-09-19T20:42:30Z","prob":37,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 47/125; brent=88.25; refinery_attack=false"}

@@ -670,3 +670,4 @@
 {"ts":"2026-10-15T11:32:04Z","prob":44,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 55/125; brent=116.16; refinery_attack=false"}
 {"ts":"2026-10-15T17:02:57Z","prob":48,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 60/125; brent=147.71; refinery_attack=false"}
 {"ts":"2026-10-15T21:24:38Z","prob":44,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 55/125; brent=122.91; refinery_attack=false"}
+{"ts":"2026-10-16T04:34:19Z","prob":48,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 60/125; brent=148.57; refinery_attack=false"}

@@ -1546,4 +1546,6 @@ window.HISTORY = [
 {"ts":"2026-11-19T20:39:28Z","prob":37,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 47/125; brent=86.125; refinery_attack=false"}
 ,
 {"ts":"2026-11-20T07:18:46Z","prob":48,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 60/125; brent=144.46; refinery_attack=false"}
+,
+{"ts":"2026-11-20T20:23:29Z","prob":37,"band":"ORANGE","method":"automated_rss_market_scrape","note":"raw 47/125; brent=62.325; refinery_attack=false"}
 ];
